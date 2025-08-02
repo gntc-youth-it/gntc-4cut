@@ -117,6 +117,7 @@ const FrameSelection: React.FC<FrameSelectionProps> = ({ frames, onSelect }) => 
                     transition: 'box-shadow 0.2s, border 0.2s',
                     margin: '0 auto',
                     display: 'block',
+                    backgroundColor: 'black'
                   }}
                   onClick={() => handleFrameSelect(frame)}
                 />
