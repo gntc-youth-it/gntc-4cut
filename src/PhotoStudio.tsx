@@ -139,22 +139,45 @@ const PhotoStudio: React.FC<PhotoStudioProps> = ({ frame, onComplete }) => {
         />
       </div>
 
-      <select
-        value={selectedDeviceId || ''}
-        onChange={(e) => setSelectedDeviceId(e.target.value)}
-        style={{
-          position: 'absolute',
-          top: '-9999px',
-          left: '-9999px',
-          visibility: 'hidden'
-        }}
-      >
-        {devices.map(device => (
-          <option key={device.deviceId} value={device.deviceId}>
-            {device.label || `Camera ${device.deviceId}`}
-          </option>
-        ))}
-      </select>
+      <div style={{
+        position: 'absolute',
+        top: '20px',
+        right: '20px',
+        zIndex: 2,
+        backgroundColor: 'rgba(255, 255, 255, 0.9)',
+        padding: '10px',
+        borderRadius: '10px',
+        boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)'
+      }}>
+        <label style={{
+          display: 'block',
+          marginBottom: '5px',
+          fontSize: '14px',
+          fontWeight: 'bold',
+          color: 'black'
+        }}>
+          카메라 선택:
+        </label>
+        <select
+          value={selectedDeviceId || ''}
+          onChange={(e) => setSelectedDeviceId(e.target.value)}
+          style={{
+            padding: '5px 10px',
+            borderRadius: '5px',
+            border: '1px solid #ccc',
+            fontSize: '14px',
+            backgroundColor: 'white',
+            color: 'black',
+            minWidth: '200px'
+          }}
+        >
+          {devices.map(device => (
+            <option key={device.deviceId} value={device.deviceId}>
+              {device.label || `Camera ${device.deviceId.slice(0, 8)}...`}
+            </option>
+          ))}
+        </select>
+      </div>
 
       <button 
         onClick={handleTakePhotoSequence} 
